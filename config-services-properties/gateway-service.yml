@@ -1,0 +1,37 @@
+app:
+  security:
+    oauth:
+      client1:
+        id: client1
+        password: password
+      get_token_path: /api/auth/oauth/token,/api/auth/login
+server:
+  port: 8080
+
+
+zuul:
+  sensitive-headers:
+  routes:
+    todo-service: /api/todos/**
+    oauth-server-service : /api/auth/**
+    proxy-service:
+      path: /proxy/**
+      service-id: proxy-service
+      sensitive-headers:
+
+
+ribbon:
+  eureka:
+    enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+logging:
+  level:
+    root: warn
+    com.melardev: trace
+    org.springframework.cloud.netflix.zuul: trace

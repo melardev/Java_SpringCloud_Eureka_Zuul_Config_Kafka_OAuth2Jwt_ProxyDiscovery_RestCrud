@@ -1,0 +1,16 @@
+# this will only work if the file is called bootstrap.yml (application.yml would not work)
+spring:
+  application:
+    name: proxy-service
+  cloud:
+    config:
+      # for the sake of the example let's hardcode the host and disable the config eureka discovery
+      discovery:
+        enabled: false
+        service-id: config-service
+      uri: http://localhost:8889
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

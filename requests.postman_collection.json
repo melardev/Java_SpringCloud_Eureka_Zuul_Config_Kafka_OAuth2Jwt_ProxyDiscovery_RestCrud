@@ -1,0 +1,407 @@
+{
+	"info": {
+		"_postman_id": "c668220e-0aa4-424b-b49c-bf53a3cebf97",
+		"name": "Spring Boot Auth2 JWT Crud Microservices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/todos",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"todos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"melardev\",\n\t\"password\": \"password\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/api/auth/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All From Proxy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/proxy/todos",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"proxy",
+						"todos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "client1",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/api/auth/oauth/token",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login JSON",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"admin\",\n\t\"password\": \"password\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/api/auth/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get completed",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/todos/completed",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"todos",
+						"completed"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get incomplete",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/todos/pending",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"todos",
+						"pending"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/todos/88",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"todos",
+						"88"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSIsInRydXN0Il0sInJvbGVzIjpbeyJhdXRob3JpdHkiOiJST0xFX0FETUlOIn1dLCJleHAiOjE1NjQwOTUyNzcsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwianRpIjoiYTE4ZDYyMDctMmI1OS00MDIzLTgyYjktMzU2NTgwMDJkYThlIiwiY2xpZW50X2lkIjoiY2xpZW50MSJ9.SrK4JPGa4Aeuee_OqhPx09BRhc1OgIT6D4ItbU_jtkKBvy0bP6HL1boN5SuW9E_F2F8oUS0-p-DYgA9ZJ2zIFi1gMN709xsXd1Fo1n_uhYIOC5RZPA5JLLKOtIumhRtaaMk2UdAihORJkHyrNM14s_JqlDeBAICQ7DgBYuSLJBww6BX7bLpVYbjpggi5HqQqjiB4Ri9y-BczTcz-6efaIs33YwcBjteuOto0Klm0O_USWmr6iLNNF9WB72_bvt3_zPeyc8ty-IlIAsouIiw8w1l7fkoP52Uppnt91JzUsrfqi6wQJb3nUilbilNBxupIHl2V6RjTcDMOvDwKeBzCaw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"postman is cool\",\n\t\"description\": \"How cool? well... It is cool\",\n\t\"completed\": false\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/api/todos",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"todos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Through proxy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSIsInRydXN0Il0sInJvbGVzIjpbeyJhdXRob3JpdHkiOiJST0xFX0FETUlOIn1dLCJleHAiOjE1NjQwOTUyNzcsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwianRpIjoiYTE4ZDYyMDctMmI1OS00MDIzLTgyYjktMzU2NTgwMDJkYThlIiwiY2xpZW50X2lkIjoiY2xpZW50MSJ9.SrK4JPGa4Aeuee_OqhPx09BRhc1OgIT6D4ItbU_jtkKBvy0bP6HL1boN5SuW9E_F2F8oUS0-p-DYgA9ZJ2zIFi1gMN709xsXd1Fo1n_uhYIOC5RZPA5JLLKOtIumhRtaaMk2UdAihORJkHyrNM14s_JqlDeBAICQ7DgBYuSLJBww6BX7bLpVYbjpggi5HqQqjiB4Ri9y-BczTcz-6efaIs33YwcBjteuOto0Klm0O_USWmr6iLNNF9WB72_bvt3_zPeyc8ty-IlIAsouIiw8w1l7fkoP52Uppnt91JzUsrfqi6wQJb3nUilbilNBxupIHl2V6RjTcDMOvDwKeBzCaw"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"postman is cool\",\n\t\"description\": \"How cool? well... It is cool\",\n\t\"completed\": false\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/proxy/todos",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"proxy",
+						"todos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSIsInRydXN0Il0sInJvbGVzIjpbeyJhdXRob3JpdHkiOiJST0xFX0FETUlOIn1dLCJleHAiOjE1NjQwOTM5MjQsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwianRpIjoiZTg5ZTMxMWEtMGJkMi00YWM2LTg4ZTgtYmRmZjJhNWMzMzYwIiwiY2xpZW50X2lkIjoiY2xpZW50MSJ9.ii6RMs0ggfEx5jUJKH8PQz_Sy9Fh5jzfx6khRZvmAkcajHyZadWYITEqMvMwwvCk1V4RUIv45xvrv5sdITcuw8MW-5-iO0JIkUK8Pcu41l3c2uE8_Yj60qV3-jS5cEEC63WsC7SMovxBamFX5VijrY2j6xYInTI01rKhP1-7RfKfD1UhIGo2ibxUJRgdHpF_jE9SmNTVm1l_3NuplGX8KbCjSl4XFznd0YPAGD2Q1AlK0epdjomYbqCPlUrcio-MNXK-d1a7R3Hfubrd45IYc7GqiwH3tV5pATZE3Ms0CxlW6DQ1YUZBwAxhOAh21v0nIIh_ytBFqEixh3Rd7nI74A",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"postman is cool\",\n\t\"description\": \"How cool? well... It is cool\",\n\t\"completed\": true\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/api/todos/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"todos",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbInJlYWQiLCJ3cml0ZSIsInRydXN0Il0sInJvbGVzIjpbeyJhdXRob3JpdHkiOiJST0xFX0FETUlOIn1dLCJleHAiOjE1NjQwOTM5MjQsImF1dGhvcml0aWVzIjpbIlJPTEVfQURNSU4iXSwianRpIjoiZTg5ZTMxMWEtMGJkMi00YWM2LTg4ZTgtYmRmZjJhNWMzMzYwIiwiY2xpZW50X2lkIjoiY2xpZW50MSJ9.ii6RMs0ggfEx5jUJKH8PQz_Sy9Fh5jzfx6khRZvmAkcajHyZadWYITEqMvMwwvCk1V4RUIv45xvrv5sdITcuw8MW-5-iO0JIkUK8Pcu41l3c2uE8_Yj60qV3-jS5cEEC63WsC7SMovxBamFX5VijrY2j6xYInTI01rKhP1-7RfKfD1UhIGo2ibxUJRgdHpF_jE9SmNTVm1l_3NuplGX8KbCjSl4XFznd0YPAGD2Q1AlK0epdjomYbqCPlUrcio-MNXK-d1a7R3Hfubrd45IYc7GqiwH3tV5pATZE3Ms0CxlW6DQ1YUZBwAxhOAh21v0nIIh_ytBFqEixh3Rd7nI74A",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/api/todos/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"todos",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete all",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/api/todos",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"todos"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,55 @@
+server:
+  port: 8082
+
+app:
+  security:
+    oauth2:
+      client1:
+        id: client1
+        password: password
+        scopes: read,write,trust
+
+      client2:
+        id: client2
+        password: password
+        scopes: read
+
+      grant_types:
+        password: password
+        implicit: implicit
+        authorization_code: authorization_code
+        refresh_token: refresh_token
+      access_token_validity_seconds: 2592000
+      refresh_token_validity_seconds: 2592000
+
+    key_file_path: private.jks
+    # This is here only to show how to @Value directly to a Resource Object
+    key_file_path_as_resource: classpath:private.jks
+
+    key_pair_alias: melardev
+    key_file_password: password
+    keystore_password: password
+    multi_login_fail_lock_time: 900
+
+
+# spring.datasource.url=jdbc:h2:file:./database/h2.db;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        trace: true
+  datasource:
+    username: sa
+    password:
+
+  jpa:
+    hibernate:
+      dialect: org.hibernate.dialect.H2Dialect
+
+
+logging:
+  level:
+    root: warn
+    org.springframework.security: debug

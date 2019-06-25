@@ -1,0 +1,36 @@
+server:
+  port: ${PORT:8889}
+
+spring:
+  application:
+    name: config-service
+
+  cloud:
+    config:
+      label: master
+      server:
+        git:
+          clone-on-start: false
+          uri: https://github.com/melardev/Java_SpringCloud_Eureka_Zuul_Config_Kafka_OAuth2Jwt_ProxyDiscovery_RestCrud.git
+          search-paths:
+            - "config-services-properties/"
+        native: # In native profile provide config files from the resources/config/ folder
+          search-locations: classpath:/config/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+logging:
+  level:
+    root: error
+    org.springframework: info
+    com.melardev: debug
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
