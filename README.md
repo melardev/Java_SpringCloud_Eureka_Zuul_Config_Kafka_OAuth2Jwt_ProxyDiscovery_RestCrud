@@ -45,7 +45,7 @@ This project uses Asymmetric cryptography.
 - To create the private key used to sign the keys by the oauth-server I did:
 `keytool -genkeypair -alias melardev -keyalg RSA -keysize 2048 -keystore private.jks -validity 3650`
 - export public key from jks, this will be used by resource-server to validate tokens without having to contact the oauth-server
-`keytool -list -rfc --keystore private.jks | openssl x509 -inform pem -pubkey -noout -keyout public.pem`
+`keytool -list -rfc --keystore private.jks | openssl x509 -inform pem -pubkey -noout -out public.pem`
 
 # Full-stack Applications
 ## Simple Crud

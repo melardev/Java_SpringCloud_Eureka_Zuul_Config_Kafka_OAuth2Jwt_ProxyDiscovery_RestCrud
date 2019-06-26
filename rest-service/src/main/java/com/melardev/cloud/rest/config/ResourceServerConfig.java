@@ -87,7 +87,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
                 String publicKeyString = new String(FileCopyUtils.copyToByteArray(publicKey.getInputStream()), StandardCharsets.UTF_8);
                 jwtAccessTokenConverter.setVerifierKey(publicKeyString);
-                // IOUtils.toString(publicKeyAsResource.getInputStream(), StandardCharsets.UTF_8);
+                // String publicKeyString = new String(FileCopyUtils.copyToByteArray(publicKey.getInputStream()), StandardCharsets.UTF_8);
+                // String publicKeyString = IOUtils.toString(publicKeyAsResource.getInputStream(), StandardCharsets.UTF_8);
 
                 return jwtAccessTokenConverter;
             } catch (IOException ex) {
